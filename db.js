@@ -122,7 +122,7 @@ Database.prototype.bootstrap = function() {
     this.db.run("INSERT INTO Users123 VALUES ('LiorMeir', '6313', 'http://52.27.127.222'); ");
     this.db.run("INSERT INTO Users123 VALUES ('Magshimim', '3982', 'http://rebecca.blackfriday '); ");
     this.db.run("INSERT INTO Users123 VALUES ('Arnold', '9473', 'http://rebecca.blackfriday '); ");
-    this.db.run("INSERT INTO Users123 VALUES ('admin', '!235wesyvdr57', 'http://rebecca.blackfriday '); ");
+    this.db.run("INSERT INTO Users123 VALUES ('admin', '5938', 'http://rebecca.blackfriday '); ");
     this.db.run("INSERT INTO Users123 VALUES ('PizzaMaster', 'BowBeforeThePizzaMaster', 'http://rebecca.blackfriday '); ");
     this.db.run("INSERT INTO permissions VALUES ('LiorMeir', 0)"
     );
