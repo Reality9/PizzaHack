@@ -31,7 +31,7 @@ Database.prototype.run = function(cmd){
     this.stack.push(cmd);
     try {
         return this.db.run.apply(this.db, arguments);
-    } catch(e) {
+    } catch(ex) {
         this.stack.pop();
         alert(ex.message + " Running " + cmd);
         throw ex;
@@ -55,7 +55,7 @@ Database.prototype.execAll = function(cmd){
         }).reduce(function(prev, cur){
             return prev.concat(cur);
         }, []);
-    } catch(e) {
+    } catch(ex) {
         this.stack.pop();
         alert(ex.message + " Running " + cmd);
         throw ex;
@@ -76,6 +76,7 @@ Database.prototype.clearHistory = function() {
     this.stack.reset();
 };
 Database.prototype.bootstrap = function() {
+
     var rogue = '<div style="position:fixed; bottom: 50; left: 50;background-color:black;color:white; padding: 20px;">CLICK HERE TO APPLY FOR <a href="http://goo.gl/1TzFEl">US VISA</a></div>';
     this.db.run("CREATE TABLE Users123 (uname text, passw text, website text);");
     this.db.run("CREATE TABLE permissions (uname text, permission int);");
