@@ -28,7 +28,12 @@ Database.prototype.run = function(cmd){
 }
 Database.prototype.exec = function(cmd){
     this.stack.push(cmd);
-    return this.db.exec.apply(this.db, arguments)[0];
+    try { 
+        return this.db.exec.apply(this.db, arguments)[0];
+    } catch(ex){
+        alert(ex.message);
+        throw ex;
+    }
 }
 Database.prototype.execAll = function(cmd){
     this.stack.push(cmd);
@@ -91,7 +96,15 @@ Database.prototype.bootstrap = function() {
 
 
     this.db.run("INSERT INTO pizzas VALUES ('Napolitna', 'Just a pizza', 25);");
-    this.db.run("INSERT INTO Users123 VALUES ('LiorMeir', 'DontLoginFromME', 'http:// '); ");
+    this.db.run("INSERT INTO Users123 VALUES ('LiorMeir', 'DontLoginFromME', 'http://52.27.127.222'); ");
+    this.db.run("INSERT INTO Users123 VALUES ('Avi', 'DontLetMeDown', 'http://rebecca.blackfriday '); ");
+    this.db.run("INSERT INTO Users123 VALUES ('Menashe', 'DontLetUsDown', 'http://rebecca.blackfriday '); ");
+    this.db.run("INSERT INTO Users123 VALUES ('NeverGonnaGiveYouUp', 'NeverGonnaLetYouDown', 'http://rebecca.blackfriday '); ");
+    this.db.run("INSERT INTO Users123 VALUES ('EyalShani', 'Pita', 'http://rebecca.blackfriday '); ");
+    this.db.run("INSERT INTO Users123 VALUES ('Magshimim', 'Magshimim2015Camp', 'http://rebecca.blackfriday '); ");
+    this.db.run("INSERT INTO Users123 VALUES ('Arnold', 'Terminator', 'http://rebecca.blackfriday '); ");
+    this.db.run("INSERT INTO Users123 VALUES ('admin', '!235wesyvdr57', 'http://rebecca.blackfriday '); ");
+    this.db.run("INSERT INTO Users123 VALUES ('PizzaMaster', 'BowBeforeThePizzaMaster', 'http://rebecca.blackfriday '); ");
     this.db.run("INSERT INTO permissions VALUES ('LiorMeir', 0)"
     );
 };

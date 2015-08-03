@@ -98,6 +98,7 @@ function login(user, pass){
         //display result
         var ret = db.exec(sqlcommand);
         if(ret && ret.values && ret.values.length > 0){
+            sessionStorage.setItem("username", ret.values[0][0]);
             return true;
         } else {
             return false;

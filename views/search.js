@@ -2,7 +2,17 @@
 
 	var query = document.getElementById("searchQuery");
 	var button = document.getElementById("searchFormItem");
-
+	var form = document.querySelector("#searchInfoForm");
+	var blocked = document.querySelector("#searchBlocked");
+	if(!sessionStorage.getItem("username")){
+		form.style.display = "none";
+		blocked.style.display = "auto";
+	} else {
+		form.style.display = "auto";
+	
+		blocked.style.display = "none";
+	}
+	console.log(form, blocked);
 	button.addEventListener("click", function(e){
 		
 		var q = query.value;
