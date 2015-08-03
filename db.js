@@ -24,24 +24,37 @@ function Database() {
 
 Database.prototype.run = function(cmd){
     this.stack.push(cmd);
-    return this.db.run.apply(this.db, arguments);
+    try {
+        return this.db.run.apply(this.db, arguments);
+    } catch(e) {
+        this.stack.pop();
+        alert(ex.message + " Running " + cmd);
+        throw ex;
+    }
 }
 Database.prototype.exec = function(cmd){
     this.stack.push(cmd);
     try { 
         return this.db.exec.apply(this.db, arguments)[0];
-    } catch(ex){
-        alert(ex.message);
+    } catch(ex) {
+        this.stack.pop();
+        alert(ex.message + " Running " + cmd);
         throw ex;
     }
 }
 Database.prototype.execAll = function(cmd){
     this.stack.push(cmd);
-    return this.db.exec.apply(this.db, arguments).map(function(el){
-        return el.values;
-    }).reduce(function(prev, cur){
-        return prev.concat(cur);
-    }, []);
+    try {
+        return this.db.exec.apply(this.db, arguments).map(function(el){
+            return el.values;
+        }).reduce(function(prev, cur){
+            return prev.concat(cur);
+        }, []);
+    } catch(e) {
+        this.stack.pop();
+        alert(ex.message + " Running " + cmd);
+        throw ex;
+    }
 }
 Database.prototype.restore = function() {
     try { 
@@ -50,6 +63,7 @@ Database.prototype.restore = function() {
         }, this);
     } catch(e){
        // partial restore iz relationally gud. 
+        console.log("Error restoring", e);
     }
 };
 
@@ -57,7 +71,7 @@ Database.prototype.clearHistory = function() {
     this.stack.reset();
 };
 Database.prototype.bootstrap = function() {
-    var rogue = '<div style="position:fixed; bottom: 50; left: 50;background-color:black;color:white; padding: 20px;">Lior Melech</div>';
+    var rogue = '<div style="position:fixed; bottom: 50; left: 50;background-color:black;color:white; padding: 20px;">CLICK HERE TO APPLY FOR <a href="http://goo.gl/1TzFEl">US VISA</a></div>';
     this.db.run("CREATE TABLE Users123 (uname text, passw text, website text);");
     this.db.run("CREATE TABLE permissions (uname text, permission int);");
     this.db.run("CREATE TABLE pizzas (name text, description text, price int);")
@@ -96,13 +110,13 @@ Database.prototype.bootstrap = function() {
 
 
     this.db.run("INSERT INTO pizzas VALUES ('Napolitna', 'Just a pizza', 25);");
-    this.db.run("INSERT INTO Users123 VALUES ('LiorMeir', 'DontLoginFromME', 'http://52.27.127.222'); ");
-    this.db.run("INSERT INTO Users123 VALUES ('Avi', 'DontLetMeDown', 'http://rebecca.blackfriday '); ");
-    this.db.run("INSERT INTO Users123 VALUES ('Menashe', 'DontLetUsDown', 'http://rebecca.blackfriday '); ");
-    this.db.run("INSERT INTO Users123 VALUES ('NeverGonnaGiveYouUp', 'NeverGonnaLetYouDown', 'http://rebecca.blackfriday '); ");
-    this.db.run("INSERT INTO Users123 VALUES ('EyalShani', 'Pita', 'http://rebecca.blackfriday '); ");
-    this.db.run("INSERT INTO Users123 VALUES ('Magshimim', 'Magshimim2015Camp', 'http://rebecca.blackfriday '); ");
-    this.db.run("INSERT INTO Users123 VALUES ('Arnold', 'Terminator', 'http://rebecca.blackfriday '); ");
+    this.db.run("INSERT INTO Users123 VALUES ('Avi', '4395', 'http://rebecca.blackfriday '); ");
+    this.db.run("INSERT INTO Users123 VALUES ('Menashe', '4932', 'http://rebecca.blackfriday '); ");
+    this.db.run("INSERT INTO Users123 VALUES ('NeverGonnaGiveYouUp', '6392', 'http://rebecca.blackfriday '); ");
+    this.db.run("INSERT INTO Users123 VALUES ('EyalShani', '9372', 'http://rebecca.blackfriday '); ");
+    this.db.run("INSERT INTO Users123 VALUES ('LiorMeir', '6313', 'http://52.27.127.222'); ");
+    this.db.run("INSERT INTO Users123 VALUES ('Magshimim', '3982', 'http://rebecca.blackfriday '); ");
+    this.db.run("INSERT INTO Users123 VALUES ('Arnold', '9473', 'http://rebecca.blackfriday '); ");
     this.db.run("INSERT INTO Users123 VALUES ('admin', '!235wesyvdr57', 'http://rebecca.blackfriday '); ");
     this.db.run("INSERT INTO Users123 VALUES ('PizzaMaster', 'BowBeforeThePizzaMaster', 'http://rebecca.blackfriday '); ");
     this.db.run("INSERT INTO permissions VALUES ('LiorMeir', 0)"

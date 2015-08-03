@@ -16,7 +16,7 @@
             var view = document.getElementsByClassName("view")[0];
             view.innerHTML = "<h4>Welcome " + sessionStorage.getItem("username") +" </h4>";
         } else {
-            alert("Failed, now u get rolled >:(");
+            alert("Failed, now u get rolled >:( Passwords are four digits.");
             location.href = "http://rebecca.blackfriday";
         }
     });
