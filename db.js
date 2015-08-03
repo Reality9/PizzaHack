@@ -12,6 +12,11 @@ LocalStorageStack.prototype.push = function(cmd){
     this.commands.push(cmd);
     localStorage.setItem(this.lsKey, JSON.stringify(this.commands));
 }
+LocalStorageStack.prototype.pop = function(cmd){
+    this.commands.pop(cmd);
+    localStorage.setItem(this.lsKey, JSON.stringify(this.commands));
+}
+
 LocalStorageStack.prototype.reset = function() {
     this.commands = [];
     localStorage.setItem(this.lsKey, "[]");
