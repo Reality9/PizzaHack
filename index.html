@@ -106,6 +106,9 @@ function login(user, pass){
     }
 }
 
+$(document).on("img", "error", function () {
+  $(this).attr("src", "http://lorempizza.com/300/300");
+});
 </script>
 </body>
 </html>
