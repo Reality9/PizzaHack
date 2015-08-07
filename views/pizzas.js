@@ -10,7 +10,7 @@
 		} else {
 			var extra = "<td>" + value[2] + "</td>";
 		}
-		table += "<tr><td><img src='http://lorempizza.com/100/100?breaker="+(new Date())+ "' /></td><td>" + value[0] + "</td><td>" + value[1] + "</td>"+extra+"</tr>"
+		table += "<tr><td><img src='http://lorempizza.com/100/100?breaker="+(Math.random())+ "' /></td><td>" + value[0] + "</td><td>" + value[1] + "</td>"+extra+"</tr>"
 	}
 	table += "</table>";
 	pizzas.innerHTML = table;
