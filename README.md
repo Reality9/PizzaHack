@@ -27,6 +27,10 @@ For obvious reasons, any "client side" tinkering (like using the developer tools
 
 Because it was written in one go, I was sleep deprived when I wrote it and it worked. There is basic routing and view management through loading HTML/CSS pages. jQuery was added in retrospect because Materialize needed it - code can be simplified to use more jQuery to be slimmer. The route `index.html#<route>` loads `views/<route>.html`, places it in the view, then loads `views/<route>.js` and `eval`s it. 
 
+## Contribution
+
+Welcome, please do help improve this and generalize it and add challenges. Any help is deeply appreciated. 
+
 ## Why aren't the jokes funny?
 
 Because of [this guy](https://www.facebook.com/galgalatz?fref=ts), he has spent the last three years making my jokes less and less funny until I eventually sort of gave up on sane or sophisticated humor. Hey, Rebecca's happy - right? Right? Right?
