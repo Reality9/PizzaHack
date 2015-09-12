@@ -2,6 +2,8 @@
 
 Project from Maghimim 2015 camp for teaching about the SQL Injection vulnerability, and about SQL.
 
+Magshimim (fulfilling in Hebrew) is an Israeli program for high-school students from the peripheries of the country. It provides them the opportunity to learn, and expirience the "Cyber" world from a "do-it-yourself" perspective, using tools such as this repository.
+
 Further documentation is pending. Pull requests and help appreciated.
 
 ![](http://i.imgur.com/9cOHfYrm.png?1)
